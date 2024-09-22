@@ -1,31 +1,54 @@
-from funciones_calculadora import sumar_n_numeros
-from funciones_calculadora import multiplicacion_n_numeros
-from funciones_calculadora import division_2_numeros
+from sumar import sumar
+from resta import restar
+from multiplicacion import multiplicar
+from dividir import dividir
+from suma_avanzada import suma_avanzada
 
-while True:
-    print('''
-    Bienvenido a mi calculadora, por favor ingresa la opcion que desees.
-    1) Hacer una suma de N números
-    2) Hacer multiplicacion de N números
-    3) Hacer una division de 2 números
+def mostrar_menu():
+    print("Selecciona una opción:")
+    print("1. Sumar dos números")
+    print("2. Restar dos números")
+    print("3. Multiplicar dos números")
+    print("4. Dividir dos números")
+    print("5. Suma avanzada (N números)")
+    print("6. Salir")
 
-    0) Salir del programa
-    ''')
-    
-    opcion = int(input('> '))
+def ejecutar_calculadora():
+    while True:
+        mostrar_menu()
+        opcion = input("Introduce el número de la opción: ")
 
-    if opcion == 0:
-        break
+        if opcion == '1':
+            a = float(input("Introduce el primer número: "))
+            b = float(input("Introduce el segundo número: "))
+            print(f"Resultado: {sumar(a, b)}")
 
-    elif opcion == 1:
-        resultado = sumar_n_numeros()
-        print(f'El resultado de tu suma es: {resultado}')
-    elif opcion == 2:
-        resultado = multiplicacion_n_numeros()
-        print(f'El resultado es: {resultado}')
-    elif opcion == 3:
-        resultado = division_2_numeros()
-        print(f'El resultado es: {resultado}')
-    else:
-        print('Ejecuta una opcion valida: (')
-print("bye, gracias por usar mi calculadora")
+        elif opcion == '2':
+            a = float(input("Introduce el primer número: "))
+            b = float(input("Introduce el segundo número: "))
+            print(f"Resultado: {restar(a, b)}")
+
+        elif opcion == '3':
+            a = float(input("Introduce el primer número: "))
+            b = float(input("Introduce el segundo número: "))
+            print(f"Resultado: {multiplicar(a, b)}")
+
+        elif opcion == '4':
+            a = float(input("Introduce el primer número: "))
+            b = float(input("Introduce el segundo número: "))
+            print(f"Resultado: {dividir(a, b)}")
+
+        elif opcion == '5':
+            numeros = input("Introduce los números separados por comas: ").split(',')
+            numeros = [float(n) for n in numeros]
+            print(f"Resultado: {suma_avanzada(*numeros)}")
+
+        elif opcion == '6':
+            print("Saliendo de la calculadora...")
+            break
+
+        else:
+            print("Opción no válida. Por favor, elige una opción correcta.")
+
+if __name__ == "__main__":
+    ejecutar_calculadora()
